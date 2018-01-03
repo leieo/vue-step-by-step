@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>VueJS - Doc' officielle</title>
-	<meta charset="utf-8"/>
+	<meta charset="utf-8">
 </head>
 <body>
 
@@ -10,6 +10,8 @@
 		<ul>
 			<li v-for="name in names">{{ name }}</li>
 		</ul>
+		<input id="input" type="text">
+		<button id="button">Add someone</button>
 	</div>
 
 
@@ -19,12 +21,21 @@
 
 	<script>
 
-		new Vue({
+		var vm = new Vue({
 			el: '#root',
 			data: {
 				names: ['Leï', 'Margaux', 'Carolyn', 'Adèle', 'Ali', 'Aurélia']
+			},
+			mounted() {
+				alert('C\'est cuit !')
 			}
-		})
+		});
+
+		document.querySelector('#button').addEventListener('click', () =>{
+			let name = document.querySelector('#input');
+			vm.names.push(name.value);
+			name.value = '';
+		});
 
 
 	</script>
