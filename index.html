@@ -2,16 +2,15 @@
 <html>
 <head>
 	<title>VueJS - Doc' officielle</title>
+	<!-- 
+		https://laracasts.com/series/learn-vue-2-step-by-step/episodes/5?autoplay=true 
+	-->
 	<meta charset="utf-8">
 </head>
 <body>
 
 	<div id="root">
-		<ul>
-			<li v-for="name in names">{{ name }}</li>
-		</ul>
-		<input id="input" type="text" v-model="newName">
-		<button v-on:click="addName">Add someone</button>
+		<button v-bind:title="title">Hover over me</button>
 	</div>
 
 
@@ -24,22 +23,11 @@
 		var vm = new Vue({
 
 			el: '#root',
+
 			data: {
-				newName: '',
-				names: ['Leï', 'Margaux', 'Carolyn', 'Adèle', 'Ali', 'Aurélia']
-			},
-
-			methods: {
-				addName(){
-					//alert('adding name');
-					this.names.push(this.newName);
-					this.newName = '';
-				}
-			},
-
-			mounted() {
-				alert('C\'est cuit !')
+				title: 'Un titre pour l\'accessibilité',
 			}
+
 		});
 
 		/*
