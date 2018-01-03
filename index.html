@@ -11,7 +11,7 @@
 			<li v-for="name in names">{{ name }}</li>
 		</ul>
 		<input id="input" type="text">
-		<button id="button">Add someone</button>
+		<button v-on:click="addName">Add someone</button>
 	</div>
 
 
@@ -22,10 +22,18 @@
 	<script>
 
 		var vm = new Vue({
+			
 			el: '#root',
 			data: {
 				names: ['Leï', 'Margaux', 'Carolyn', 'Adèle', 'Ali', 'Aurélia']
 			},
+
+			methods: {
+				addName(){
+					alert('adding name');
+				}
+			},
+
 			mounted() {
 				alert('C\'est cuit !')
 			}
