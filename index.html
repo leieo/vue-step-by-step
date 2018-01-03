@@ -2,12 +2,14 @@
 <html>
 <head>
 	<title>VueJS - Doc' officielle</title>
+	<meta charset="utf-8"/>
 </head>
 <body>
 
 	<div id="root">
-		<input type="text" id="input" v-model="message">
-		<p>The value of the input is : {{ message }}</p>
+		<ul>
+			<li v-for="name in names">{{ name }}</li>
+		</ul>
 	</div>
 
 
@@ -16,15 +18,12 @@
 
 
 	<script>
-		
-		let data = {
-			message: 'Hello World'
-		};
-
 
 		new Vue({
 			el: '#root',
-			data: data
+			data: {
+				names: ['Leï', 'Margaux', 'Carolyn', 'Adèle', 'Ali', 'Aurélia']
+			}
 		})
 
 
@@ -32,5 +31,3 @@
 
 </body>
 </html>
-
-https://unpkg.com/vue@2.5.13/dist/vue.js
