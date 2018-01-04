@@ -3,7 +3,7 @@
 <head>
 	<title>VueJS - Doc' officielle</title>
 	<!-- 
-		https://laracasts.com/series/learn-vue-2-step-by-step/episodes/5?autoplay=true 
+		https://laracasts.com/series/learn-vue-2-step-by-step/episodes/6?autoplay=true 
 	-->
 	<meta charset="utf-8">
 	<style>
@@ -15,12 +15,15 @@
 <body>
 
 	<div id="root">
-		<!-- la directive v-bind lie l'attribut html title à notre data title 
-			on renplace v-on: par @, et v-bind: par : -->
-		<h1 :class="className">Hello World</h1>
-		<button :title="title">Hover over me</button>
-		<button :class="{ 'is-loading': isLoading }" @click="toggleClass">Click me</button>
-		<button :disabled="isDisabled" @click="clickDisabled">Disable me</button>
+
+		<h1>
+
+			{{reversedMessage}}
+
+		</h1>
+
+
+
 	</div>
 
 
@@ -34,29 +37,16 @@
 			el: '#root',
 
 			data: {
-				className: 'color-blue',
-				isLoading: false,
-				isDisabled: false
+				message: 'Hello World',
 			},
 
-			methods: {
-				toggleClass() {
-					this.isLoading = true;
-				},
-
-				clickDisabled() {
-					this.isDisabled = true;
+			computed: {
+				reversedMessage() {
+					return this.message.split('').reverse().join('');
 				}
 			}
 
 		});
-
-		/*
-		document.querySelector('#button').addEventListener('click', () =>{
-			let newName = document.querySelector('#input');
-			vm.names.push(newName.value);
-			newName.value = '';
-		});*/
 
 
 	</script>
