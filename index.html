@@ -16,8 +16,20 @@
 
 	<div id="root">
 
+		<h1>All tasks</h1>
 		<ul>
 			<li v-for="task in tasks" v-text="task.description"></li>
+		</ul>
+
+		<h2>To do</h2>
+		<ul>
+			<li v-for="task in incompleteTasks" v-text="task.description"></li>
+		</ul>
+
+
+		<h2>Done</h2>
+		<ul>
+			<li v-for="task in completedTasks" v-text="task.description"></li>
 		</ul>
 
 
@@ -37,7 +49,7 @@
 			data: {
 				tasks: [
 				{ description: 'Go to the store', completed: false},
-				{ description: 'Watch th sunset', completed: true},
+				{ description: 'Watch the sunset', completed: true},
 				{ description: 'Pay bills', completed: false},
 				{ description: 'Meet friends', completed: true},
 				{ description: 'Sport', completed: false}
@@ -45,8 +57,13 @@
 			},
 
 			computed: {
-				reversedMessage() {
-					return this.message.split('').reverse().join('');
+				incompleteTasks() {
+					return this.tasks.filter(task => ! task.completed);
+				},
+
+
+				completedTasks() {
+					return this.tasks.filter(task => task.completed);
 				}
 			}
 
