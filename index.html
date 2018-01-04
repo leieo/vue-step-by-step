@@ -6,13 +6,22 @@
 		https://laracasts.com/series/learn-vue-2-step-by-step/episodes/5?autoplay=true 
 	-->
 	<meta charset="utf-8">
+	<style>
+		.color-red { color: red; }
+		.color-blue { color: blue; }
+		.is-loading { background-color: yellow; }
+	</style>
 </head>
 <body>
 
 	<div id="root">
-		<button v-bind:title="title">Hover over me</button>
+		<!-- la directive v-bind lie l'attribut html title à notre data title 
+			on renplace v-on: par @, et v-bind: par : -->
+		<h1 :class="className">Hello World</h1>
+		<button :title="title">Hover over me</button>
+		<button :class="{ 'is-loading': isLoading }" @click="toggleClass">Click me</button>
+		<button :disabled="isDisabled" @click="clickDisabled">Disable me</button>
 	</div>
-
 
 
 	<script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
@@ -25,7 +34,19 @@
 			el: '#root',
 
 			data: {
-				title: 'Un titre pour l\'accessibilité',
+				className: 'color-blue',
+				isLoading: false,
+				isDisabled: false
+			},
+
+			methods: {
+				toggleClass() {
+					this.isLoading = true;
+				},
+
+				clickDisabled() {
+					this.isDisabled = true;
+				}
 			}
 
 		});
