@@ -18,7 +18,9 @@
 
 		<h1>All tasks</h1>
 		<ul>
-			<li v-for="task in tasks" v-text="task.description"></li>
+			<li v-for="task in tasks">
+				{{ task.description }} - <button v-if="! task.completed" v-on:click="checkTask(task)">Done!</button>
+			</li>
 		</ul>
 
 		<h2>To do</h2>
@@ -47,6 +49,7 @@
 			el: '#root',
 
 			data: {
+				title: 'hey',
 				tasks: [
 				{ description: 'Go to the store', completed: false},
 				{ description: 'Watch the sunset', completed: true},
@@ -56,9 +59,17 @@
 				]
 			},
 
+
+			methods: {
+				checkTask: function(task) {
+					task.completed = ! task.completed;
+				}
+			},
+
+
 			computed: {
 				incompleteTasks() {
-					return this.tasks.filter(task => ! task.completed);
+					return this.tasks.filter(toto => ! toto.completed);
 				},
 
 
