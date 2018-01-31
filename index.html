@@ -1,87 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>VueJS - Doc' officielle</title>
+	<title>VueJS - Doc' officielle / </title>
 	<!-- 
-		https://laracasts.com/series/learn-vue-2-step-by-step/episodes/6?autoplay=true 
+        https://laracasts.com/series/learn-vue-2-step-by-step/episodes/7
 	-->
 	<meta charset="utf-8">
-	<style>
-		.color-red { color: red; }
-		.color-blue { color: blue; }
-		.is-loading { background-color: yellow; }
-	</style>
+	<style></style>
 </head>
 <body>
 
 	<div id="root">
 
-		<h1>All tasks</h1>
-		<ul>
-			<li v-for="task in tasks">
-				{{ task.description }} - <button v-if="! task.completed" v-on:click="checkTask(task)">Done!</button>
-			</li>
-		</ul>
-
-		<h2>To do</h2>
-		<ul>
-			<li v-for="task in incompleteTasks" v-text="task.description"></li>
-		</ul>
-
-
-		<h2>Done</h2>
-		<ul>
-			<li v-for="task in completedTasks" v-text="task.description"></li>
-		</ul>
-
+		<task-list></task-list>
 
 
 	</div>
 
 
 	<script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
-
-
-	<script>
-
-		var vm = new Vue({
-
-			el: '#root',
-
-			data: {
-				title: 'hey',
-				tasks: [
-				{ description: 'Go to the store', completed: false},
-				{ description: 'Watch the sunset', completed: true},
-				{ description: 'Pay bills', completed: false},
-				{ description: 'Meet friends', completed: true},
-				{ description: 'Sport', completed: false}
-				]
-			},
-
-
-			methods: {
-				checkTask: function(task) {
-					task.completed = ! task.completed;
-				}
-			},
-
-
-			computed: {
-				incompleteTasks() {
-					return this.tasks.filter(toto => ! toto.completed);
-				},
-
-
-				completedTasks() {
-					return this.tasks.filter(task => task.completed);
-				}
-			}
-
-		});
-
-
-	</script>
-
+	<script src="main.js"></script>
 </body>
 </html>
