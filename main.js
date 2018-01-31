@@ -1,34 +1,32 @@
-Vue.component('ah-article', {
-	props: ['title', 'body'],
-
-	data() {
-		return {
-			isVisible: true
-		};
-	},
-
+Vue.component('modal', {
 	template: `
-		<article class="message" v-show="isVisible">
-			<div class="message-header">
-				{{ title }}
-				<button class="delete" aria-label="delete" @click="hideArticle"></button>
+		<div class="modal is-active">
+			<div class="modal-background"></div>
+			<div class="modal-content">
+				<div class="box">
+					<p><slot></slot></p>
+				</div>
 			</div>
-			<div class="message-body">
-				{{ body }}
-			</div>
-		</article>
-	`,
 
-	methods: {
-		hideArticle() {
-			this.isVisible = false;
-		}
-	}
+			<button class="modal-close" @click="$emit('close')"></button>
+		</div>
+	`
 });
 
 new Vue({
-	el: '#root'
+	el: '#root',
+
+	data:  {
+		modalVisible: false
+	},
+
+	methods: {
+		showModal() {
+			this.modalVisible = true;
+		},
+
+		hideModal() {
+			this.modalVisible = false;
+		}
+	}
 });
-
-
-				/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem. */

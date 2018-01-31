@@ -3,7 +3,7 @@
 <head>
 	<title>VueJS - Doc' officielle / </title>
 	<!-- 
-        https://laracasts.com/series/learn-vue-2-step-by-step/episodes/8
+        https://laracasts.com/series/learn-vue-2-step-by-step/episodes/10
 	-->
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
@@ -13,8 +13,11 @@
 
 	<div id="root">
 
-		<ah-article title="Hello World" body="Lorem ipsum dolor sit amet,"></ah-article>
-		<ah-article title="Hello Universe" body="Bli bli bli."></ah-article>
+		<modal v-show="modalVisible" @close="hideModal">
+			We insert any text here, by using the &lt;slot&gt; tag.
+		</modal>
+
+		<button @click="showModal">Show modal</button>
 
 	</div>
 
