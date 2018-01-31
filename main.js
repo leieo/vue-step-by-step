@@ -1,26 +1,34 @@
-Vue.component('task-list', {
-	template: `
-		<div>
-			<task v-for="task in tasks">{{ task.task }}</task>
-		</div>
-	`,
+Vue.component('ah-article', {
+	props: ['title', 'body'],
 
 	data() {
 		return {
-			tasks: [
-				{ task: 'Go to the store', complete: true },
-				{ task: 'Go to the bank', complete: false },
-				{ task: 'Go to work', complete: false },
-				{ task: 'Go to the movies', complete: true },
-			]
+			isVisible: true
 		};
-	}
-});
+	},
 
-Vue.component('task', {
-	template: '<li><slot></slot></li>'
+	template: `
+		<article class="message" v-show="isVisible">
+			<div class="message-header">
+				{{ title }}
+				<button class="delete" aria-label="delete" @click="hideArticle"></button>
+			</div>
+			<div class="message-body">
+				{{ body }}
+			</div>
+		</article>
+	`,
+
+	methods: {
+		hideArticle() {
+			this.isVisible = false;
+		}
+	}
 });
 
 new Vue({
 	el: '#root'
 });
+
+
+				/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem. */
