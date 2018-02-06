@@ -3,7 +3,7 @@
 <head>
 	<title>VueJS - Doc' officielle / </title>
 	<!-- 
-        https://laracasts.com/series/learn-vue-2-step-by-step/episodes/10
+        https://laracasts.com/series/learn-vue-2-step-by-step/episodes/11
 	-->
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
@@ -13,11 +13,26 @@
 
 	<div id="root">
 
-		<modal v-show="modalVisible" @close="hideModal">
-			We insert any text here, by using the &lt;slot&gt; tag.
-		</modal>
+		<tabs>
 
-		<button @click="showModal">Show modal</button>
+			<tab name="About Us" :selected="true">
+				<h1>Here is the content for the about us tab.</h1>
+			</tab>
+
+			<tab name="About Our Culture">
+				<h1>Here is the content for the about our culture tab.</h1>
+			</tab>
+			
+			<tab name="About Our Vision">
+				<h1>Here is the content for the about our vision tab.</h1>
+			</tab>
+			
+			<tab name="About Others">
+				<h1>Here is the content for the about others tab.</h1>
+			</tab>
+			
+
+		</tabs>
 
 	</div>
 
